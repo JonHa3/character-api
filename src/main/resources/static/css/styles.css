@@ -1,0 +1,236 @@
+/* ---------- Base ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Verdana, Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+h1 {
+    text-align: center;
+    color: #2b2b2b;
+    margin-top: 1.5rem;
+}
+
+h2 {
+    color: #3a3a3a;
+    border-bottom: 2px solid #6c63ff;
+    display: inline-block;
+    padding-bottom: 0.2rem;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+    background-color: #2b2b3d;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: #6c63ff;
+}
+
+/* ---------- Search bar (index page) ---------- */
+input[type="text"] {
+    display: block;
+    margin: 1.5rem auto;
+    padding: 0.6rem 1rem;
+    width: 90%;
+    max-width: 400px;
+    border: 2px solid #d0d0d0;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+/* ---------- Character card grid (index page) ---------- */
+body > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.card h2 {
+    border-bottom: none;
+    margin: 0.3rem 0;
+    color: #2b2b2b;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.card li {
+    padding: 0.15rem 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Lay the cards out in a responsive grid instead of one long column */
+body {
+    display: block;
+}
+
+@media (min-width: 700px) {
+    body > a {
+        display: inline-block;
+        vertical-align: top;
+        width: 45%;
+        margin: 1rem 2%;
+    }
+}
+
+/* ---------- Details / About pages ---------- */
+.page-content {
+    max-width: 650px;
+    margin: 2rem auto;
+    padding: 1.75rem 2.25rem 2.25rem 2.25rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.page-content h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.page-content img {
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.page-content h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-content p {
+    margin: 0 0 1rem 0;
+}
+
+.page-content ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.3rem;
+}
+
+.page-content li {
+    padding: 0.15rem 0;
+}
+
+/* ---------- Form page ---------- */
+form {
+    max-width: 450px;
+    margin: 1.5rem auto;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+form label {
+    font-weight: bold;
+    margin-top: 0.6rem;
+}
+
+form input, form textarea {
+    padding: 0.5rem;
+    border: 2px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+form button {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #564fd8;
+}
+
+/* ---------- Card description text ---------- */
+.card-desc {
+    text-align: left;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+    line-height: 1.4;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    background-color: #2b2b3d;
+    color: #cfcfcf;
+    font-size: 0.85rem;
+}
