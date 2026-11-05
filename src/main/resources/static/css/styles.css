@@ -213,6 +213,18 @@ form button:hover {
     background-color: #564fd8;
 }
 
+form .field-error {
+    color: #c0392b;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+form .cancel {
+    text-align: center;
+    color: #6c63ff;
+    margin-top: 0.4rem;
+}
+
 /* ---------- Card description text ---------- */
 .card-desc {
     text-align: left;

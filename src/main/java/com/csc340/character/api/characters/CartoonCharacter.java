@@ -2,6 +2,7 @@ package com.csc340.character.api.characters;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -13,11 +14,11 @@ public class CartoonCharacter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long characterId;
 
-    @NotBlank
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Description is required")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
@@ -25,6 +26,8 @@ public class CartoonCharacter {
 
     private String species;
 
+    // Lets HTML <input type="date"> values (yyyy-MM-dd) bind from form posts
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate firstAppearance;
 
     // Web link or root-relative path such as /images/aang.png. May be empty.
