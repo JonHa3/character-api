@@ -222,6 +222,48 @@ form button:hover {
     line-height: 1.4;
 }
 
+/* ---------- Search form (gallery) ---------- */
+form.search {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    max-width: 650px;
+    padding: 1rem;
+}
+
+form.search input[type="text"] {
+    margin: 0;
+    flex: 1 1 200px;
+    width: auto;
+}
+
+form.search select {
+    padding: 0.55rem 0.8rem;
+    border: 2px solid #d0d0d0;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #fff;
+}
+
+form.search select:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+form.search button {
+    margin-top: 0;
+    padding: 0.55rem 1.2rem;
+    border-radius: 20px;
+}
+
+form.search .clear {
+    color: #6c63ff;
+    font-weight: bold;
+}
+
 /* ---------- Gallery intro and empty state ---------- */
 .intro, .empty {
     text-align: center;

@@ -3,6 +3,20 @@
     <h1>Character Gallery</h1>
     <p class="intro">A collection of iconic cartoon characters from across different animated universes.</p>
 
+    <form class="search" method="get" action="/">
+        <input type="text" name="name" placeholder="Search by name" value="${name!}">
+        <select name="network" aria-label="Filter by network">
+            <option value="">All networks</option>
+            <#list networks as n>
+                <option value="${n}"<#if n?lower_case == (network!'')?trim?lower_case> selected</#if>>${n}</option>
+            </#list>
+        </select>
+        <button type="submit">Search</button>
+        <#if name?has_content || network?has_content>
+            <a class="clear" href="/">Clear</a>
+        </#if>
+    </form>
+
     <#if characters?has_content>
         <div class="gallery">
             <#list characters as c>

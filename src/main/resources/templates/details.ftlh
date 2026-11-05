@@ -14,7 +14,7 @@
         <p>${character.species!'Unknown'}</p>
 
         <h2>First Appearance</h2>
-        <p><#if character.firstAppearance??>${character.firstAppearance?string("MMMM d, yyyy")}<#else>Unknown</#if></p>
+        <p><#if character.firstAppearance??>${character.firstAppearance?string?date("yyyy-MM-dd")?string("MMMM d, yyyy")}<#else>Unknown</#if></p>
 
         <p><a href="/">&larr; Back to the gallery</a></p>
     </div>

@@ -30,6 +30,17 @@ public class CharacterService {
         return repository.findAll();
     }
 
+    // Distinct, sorted network names for the gallery's filter dropdown.
+    public List<String> findAllNetworks() {
+        return repository.findAll().stream()
+                .map(CartoonCharacter::getNetwork)
+                .filter(n -> n != null && !n.isBlank())
+                .map(String::trim)
+                .distinct()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .toList();
+    }
+
     public CartoonCharacter findById(Long id) {
         return repository.findById(id).orElseThrow(() -> new CharacterNotFoundException(id));
     }
