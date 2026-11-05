@@ -1,25 +1,21 @@
 <#import "layout.ftlh" as layout>
-<@layout.page title="Character Details">
+<@layout.page title=character.name>
     <div class="page-content">
-        <h1>Gumball Waterson</h1>
-        <img src="/images/gumball-details.png" alt="Gumball Waterson">
+        <h1>${character.name}</h1>
+        <img src="${character.imageUrl?has_content?then(character.imageUrl, '/images/placeholder.svg')}" alt="${character.name}">
 
         <h2>Backstory</h2>
-        <p>Gumball is a blue cat, he goes on wacky adventures with his fish brother Darwin</p>
+        <p>${character.description}</p>
 
-        <h2>Abilities</h2>
-        <ul>
-            <li>Comedy</li>
-            <li>Resilience</li>
-        </ul>
+        <h2>Network</h2>
+        <p>${character.network!'Unknown'}</p>
+
+        <h2>Species</h2>
+        <p>${character.species!'Unknown'}</p>
 
         <h2>First Appearance</h2>
-        <p>AWOG Season 1, Episode 1: "The DVD" (2011)</p>
+        <p><#if character.firstAppearance??>${character.firstAppearance?string("MMMM d, yyyy")}<#else>Unknown</#if></p>
 
-        <h2>Personality Traits</h2>
-        <ul>
-            <li>Narcissistic</li>
-            <li>Sarcastic</li>
-        </ul>
+        <p><a href="/">&larr; Back to the gallery</a></p>
     </div>
 </@layout.page>

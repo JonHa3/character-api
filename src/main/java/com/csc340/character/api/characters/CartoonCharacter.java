@@ -27,6 +27,9 @@ public class CartoonCharacter {
 
     private LocalDate firstAppearance;
 
+    // Web link or root-relative path such as /images/aang.png. May be empty.
+    private String imageUrl;
+
     public CartoonCharacter() {
     }
 
@@ -81,5 +84,13 @@ public class CartoonCharacter {
 
     public void setFirstAppearance(LocalDate firstAppearance) {
         this.firstAppearance = firstAppearance;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

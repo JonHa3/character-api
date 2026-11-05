@@ -45,6 +45,7 @@ public class CharacterService {
         existing.setNetwork(updated.getNetwork());
         existing.setSpecies(updated.getSpecies());
         existing.setFirstAppearance(updated.getFirstAppearance());
+        existing.setImageUrl(updated.getImageUrl());
         return repository.save(existing);
     }
 
