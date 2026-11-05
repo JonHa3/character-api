@@ -65,7 +65,8 @@ input[type="text"]:focus {
 }
 
 /* ---------- Character card grid (index page) ---------- */
-body > a {
+/* cards sit inside <div class="gallery"> */
+.gallery > a {
     text-decoration: none;
     color: inherit;
 }
@@ -114,12 +115,8 @@ body > a {
 }
 
 /* Lay the cards out in a responsive grid instead of one long column */
-body {
-    display: block;
-}
-
 @media (min-width: 700px) {
-    body > a {
+    .gallery > a {
         display: inline-block;
         vertical-align: top;
         width: 45%;
@@ -223,6 +220,18 @@ form button:hover {
     font-size: 0.9rem;
     margin-top: 0.6rem;
     line-height: 1.4;
+}
+
+/* ---------- One-time success message ---------- */
+.flash {
+    max-width: 650px;
+    margin: 1.5rem auto 0 auto;
+    padding: 0.8rem 1.2rem;
+    background-color: #e8f6ec;
+    border-left: 5px solid #2e9d57;
+    border-radius: 6px;
+    color: #1f6b3b;
+    font-weight: bold;
 }
 
 /* ---------- Footer ---------- */

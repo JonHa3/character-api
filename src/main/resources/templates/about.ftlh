@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>About</title>
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="details.html">Details</a>
-        <a href="about.html">About</a>
-        <a href="new-character-form.html">Add a Character</a>
-    </nav>
-
+<#import "layout.ftlh" as layout>
+<@layout.page title="About">
     <div class="page-content">
         <h1>About This Site</h1>
         <img src="/images/gumball-details.png" alt="Gumball Waterson">
@@ -22,9 +10,4 @@
 
         <p>This site is static and does not have a working backend, so the search bar and "Add a Character" form are included to demonstrate the intended user experience rather than to function fully. Future versions could connect these features to a real database so users could search and submit their own characters.</p>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Character Gallery. Created for a CSC-340 assignment.</p>
-    </footer>
-</body>
-</html>
+</@layout.page>

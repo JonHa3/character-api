@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Character Details</title>
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="details.html">Details</a>
-        <a href="about.html">About</a>
-        <a href="new-character-form.html">Add a Character</a>
-    </nav>
-
+<#import "layout.ftlh" as layout>
+<@layout.page title="Character Details">
     <div class="page-content">
         <h1>Gumball Waterson</h1>
         <img src="/images/gumball-details.png" alt="Gumball Waterson">
@@ -34,9 +22,4 @@
             <li>Sarcastic</li>
         </ul>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Character Gallery. Created for a CSC-340 assignment.</p>
-    </footer>
-</body>
-</html>
+</@layout.page>
