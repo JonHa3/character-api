@@ -1,10 +1,19 @@
-# Cartoon Character API
+# Character Gallery Web App
 
-A REST API for the cartoon characters from my CSC-340 Character Gallery static web app (Gumball, Ben 10, Aang, Dipper, Finn, and more). Built with Spring Boot using a layered architecture (Controller → Service → Repository → Entity), with data stored in PostgreSQL on Neon and deployed on Render with Docker.
+A full-stack web app for the cartoon characters from my CSC-340 Character Gallery (Gumball, Ben 10, Aang, Dipper, Finn, and more). Visitors can browse, search, add, edit, and remove characters.
 
-## Live API
+It is one Spring Boot application with two front ends on the same service layer:
 
-**Base URL:** https://character-api-zw3i.onrender.com/api/characters
+- **Web pages** rendered on the server with FreeMarker templates (Assignment 4, Track A)
+- **A JSON REST API** at `/api/characters` (Assignment 3)
+
+Layered architecture: Page Controller / REST Controller → Service → Repository → Entity, with data stored in PostgreSQL on Neon and deployed on Render with Docker.
+
+## Live Site
+
+**Home page:** https://character-api-zw3i.onrender.com/
+
+**API base URL:** https://character-api-zw3i.onrender.com/api/characters
 
 > **Heads up:** This runs on Render's free tier, which puts the service to sleep when idle. The first request after a period of inactivity can take up to a minute while it wakes up. Requests after that are fast.
 
@@ -14,6 +23,7 @@ A REST API for the cartoon characters from my CSC-340 Character Gallery static w
 |------|------------|
 | Language | Java 25 |
 | Framework | Spring Boot 4 (Web MVC, Data JPA, Validation) |
+| Templates | FreeMarker (`.ftlh`) |
 | Database | PostgreSQL on Neon |
 | Build | Maven (wrapper included) |
 | Deployment | Docker (multi-stage build) on Render |
@@ -30,8 +40,25 @@ A REST API for the cartoon characters from my CSC-340 Character Gallery static w
 | `network` | String | Optional; the network the show aired on (e.g. Cartoon Network, Nickelodeon, Disney) |
 | `species` | String | Optional (e.g. Human, Cat) |
 | `firstAppearance` | LocalDate | Optional; format `yyyy-MM-dd` |
+| `imageUrl` | String | Optional; a web link or a local path such as `/images/aang.png`. Characters without one show a placeholder |
 
-## Endpoints
+## Web Pages
+
+| Method | Route | Template | Description |
+|--------|-------|----------|-------------|
+| GET | `/` | `index.ftlh` | Gallery of character cards. Optional search: `?name=` (partial match) and `&network=` (dropdown) |
+| GET | `/characters/{id}` | `details.ftlh` | One character's full details, with Edit and Delete buttons |
+| GET | `/about` | `about.ftlh` | About the site and how it is built |
+| GET | `/characters/new` | `character-form.ftlh` | Empty form to add a character |
+| POST | `/characters` | redirects to `/` | Saves a new character, then shows "*name* was added" |
+| GET | `/characters/{id}/edit` | `character-form.ftlh` | Same form, pre-filled with the character's current values |
+| POST | `/characters/{id}` | redirects to `/characters/{id}` | Updates the existing character, then shows "*name* was updated" |
+| POST | `/characters/{id}/delete` | redirects to `/` | Deletes after a confirmation prompt, then shows "*name* was removed" |
+| any | unknown id or URL | `error.ftlh` | Friendly "Not Found" page (404) |
+
+All pages share `layout.ftlh` (head, navigation bar, success message, footer). Forms use Post/Redirect/Get, so refreshing after saving never submits twice. Invalid form input re-displays the form with the typed values and an error message for each field.
+
+## API Endpoints
 
 Base path: `/api/characters`
 
@@ -62,7 +89,8 @@ Base path: `/api/characters`
   "description": "A blue cat who gets into chaotic misadventures in Elmore.",
   "network": "Cartoon Network",
   "species": "Cat",
-  "firstAppearance": "2011-05-03"
+  "firstAppearance": "2011-05-03",
+  "imageUrl": "/images/gumball-details.png"
 }
 ```
 
@@ -76,7 +104,8 @@ Response: `201 Created` with the saved character, including its generated `chara
   "description": "A mischievous blue cat from Elmore who attends Elmore Junior High.",
   "network": "Cartoon Network",
   "species": "Cat",
-  "firstAppearance": "2011-05-03"
+  "firstAppearance": "2011-05-03",
+  "imageUrl": "/images/gumball-details.png"
 }
 ```
 
@@ -98,7 +127,7 @@ Response: `200 OK` with the updated character.
    ./mvnw spring-boot:run        # Mac/Linux
    .\mvnw.cmd spring-boot:run    # Windows
    ```
-3. The API runs at `http://localhost:8080/api/characters`. The `characters` table is created automatically on first run.
+3. Open the site at `http://localhost:8080/`. The API runs at `http://localhost:8080/api/characters`. The `characters` table is created (and new columns added) automatically on startup.
 
 ## Project Structure
 
@@ -109,9 +138,16 @@ src/main/java/com/csc340/character/api/
     CartoonCharacter.java            (Entity)
     CharacterRepository.java         (Repository)
     CharacterService.java            (Service)
-    CharacterController.java         (REST Controller)
+    CharacterController.java         (REST Controller, JSON at /api/characters)
+    CharacterPageController.java     (Page Controller, HTML pages)
     CharacterNotFoundException.java  (maps to 404)
 src/main/resources/
   application.properties
+  templates/                         (FreeMarker pages)
+    layout.ftlh  index.ftlh  details.ftlh  about.ftlh
+    character-form.ftlh  error.ftlh
+  static/
+    css/styles.css
+    images/                          (character images and placeholder.svg)
 Dockerfile
 ```
