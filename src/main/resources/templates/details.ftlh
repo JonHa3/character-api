@@ -16,6 +16,14 @@
         <h2>First Appearance</h2>
         <p><#if character.firstAppearance??>${character.firstAppearance?string?date("yyyy-MM-dd")?string("MMMM d, yyyy")}<#else>Unknown</#if></p>
 
+        <div class="actions">
+            <a class="button" href="/characters/${character.characterId?c}/edit">Edit</a>
+            <form method="post" action="/characters/${character.characterId?c}/delete"
+                  onsubmit="return confirm('Delete ${character.name?js_string}? This cannot be undone.');">
+                <button type="submit" class="danger">Delete</button>
+            </form>
+        </div>
+
         <p><a href="/">&larr; Back to the gallery</a></p>
     </div>
 </@layout.page>

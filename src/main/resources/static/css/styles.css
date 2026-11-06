@@ -225,6 +225,55 @@ form .cancel {
     margin-top: 0.4rem;
 }
 
+/* ---------- Edit / Delete buttons (details page) ---------- */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 1.5rem 0 1rem 0;
+}
+
+/* the delete form is just a wrapper around one button */
+.actions form {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background: none;
+    display: block;
+    max-width: none;
+}
+
+.actions .button,
+.actions button {
+    display: inline-block;
+    margin: 0;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #6c63ff;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.actions .button:hover {
+    background-color: #564fd8;
+}
+
+.actions button.danger {
+    background-color: #c0392b;
+}
+
+.actions button.danger:hover {
+    background-color: #a93226;
+}
+
+.error-page {
+    text-align: center;
+}
+
 /* ---------- Card description text ---------- */
 .card-desc {
     text-align: left;
